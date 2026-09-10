@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Pacifico&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #D9848F; }
+    a:hover { color: #B4636E; }
+
+    .fgc-canvas {
+      width: 1000px;
+      height: 760px;
+      background: #FFF8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, sans-serif;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .fgc-wordmark {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fgc-line1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: 150px;
+      line-height: 1;
+      letter-spacing: 1px;
+      background: linear-gradient(180deg, #FBEFF1 0%, #F0A9B4 45%, #D9848F 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow:
+        -4px 0 0 #A85763, 4px 0 0 #A85763,
+        0 -4px 0 #A85763, 0 4px 0 #A85763,
+        -3px -3px 0 #A85763, 3px -3px 0 #A85763,
+        -3px 3px 0 #A85763, 3px 3px 0 #A85763,
+        0 12px 0 rgba(168,87,99,0.35);
+    }
+
+    .fgc-btn-o {
+      width: 112px;
+      height: 112px;
+      margin: 0 4px;
+      position: relative;
+      top: 8px;
+      flex-shrink: 0;
+    }
+
+    .fgc-line2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 74px;
+      line-height: 1.5;
+      padding: 10px 14px 24px;
+      background: linear-gradient(180deg, #C7DAC1 0%, #7FA476 60%, #5A7F52 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 3px 0 rgba(69,97,62,0.25);
+      margin-top: 6px;
+      box-sizing: content-box;
+    }
+  </style>
+</helmet>
+
+<div class="fgc-canvas">
+  <div class="fgc-wordmark">
+    <div class="fgc-line1">
+      <span>Fl</span>
+      <svg class="fgc-btn-o" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="#FBEFF1" stroke="#A85763" stroke-width="6"/>
+        <circle cx="50" cy="50" r="33" fill="none" stroke="#D9848F" stroke-width="3"/>
+        <circle cx="38" cy="38" r="5.5" fill="#A85763"/>
+        <circle cx="62" cy="38" r="5.5" fill="#A85763"/>
+        <circle cx="38" cy="62" r="5.5" fill="#A85763"/>
+        <circle cx="62" cy="62" r="5.5" fill="#A85763"/>
+      </svg>
+      <span>rals</span>
+    </div>
+    <div class="fgc-line2">Garden Crafts</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

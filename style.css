@@ -1,0 +1,767 @@
+/* Florals Garden Crafts — shared styles
+   Tokens per DESIGN.md "Florals Garden Crafts" section. */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --fgc-cream: #FFF8F0;
+  --fgc-blush: #F7D7DC;
+  --fgc-sage: #B9CDB2;
+  --fgc-butter: #F3DCA0;
+  --fgc-rose-deep: #D9848F;
+  --fgc-ink: #5B4148;
+
+  --fgc-blush-soft: #FCEBEE;
+  --fgc-sage-soft: #E3ECDF;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--fgc-cream);
+  color: var(--fgc-ink);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+a { color: var(--fgc-rose-deep); }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- Layout ---------- */
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Gingham texture strip ---------- */
+
+.gingham-strip {
+  height: 14px;
+  width: 100%;
+  background:
+    repeating-linear-gradient(90deg, rgba(217,132,143,0.4) 0 8px, transparent 8px 24px),
+    repeating-linear-gradient(0deg, rgba(122,157,110,0.4) 0 8px, transparent 8px 24px),
+    var(--fgc-blush-soft);
+}
+
+.gingham-bg {
+  background:
+    repeating-linear-gradient(90deg, rgba(217,132,143,0.3) 0 8px, transparent 8px 24px),
+    repeating-linear-gradient(0deg, rgba(122,157,110,0.3) 0 8px, transparent 8px 24px),
+    var(--fgc-cream);
+}
+
+.polka-bg {
+  background-image: radial-gradient(circle, rgba(217,132,143,0.3) 3px, transparent 3.5px);
+  background-size: 26px 26px;
+  background-color: var(--fgc-sage-soft);
+}
+
+.pink-gingham-bg {
+  background:
+    repeating-linear-gradient(90deg, rgba(217,132,143,0.09) 0 6px, transparent 6px 18px),
+    repeating-linear-gradient(0deg, rgba(122,157,110,0.09) 0 6px, transparent 6px 18px),
+    var(--fgc-cream);
+}
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  position: relative;
+  padding: 28px 0 8px;
+  text-align: center;
+}
+
+.wordmark {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.logo-frame {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-swoosh {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-logo {
+  position: relative;
+  z-index: 1;
+  width: 340px;
+  max-width: 80vw;
+  height: auto;
+}
+
+.logo-swoosh-yarn {
+  stroke-dasharray: 14 22;
+  animation: stitch-flow 7s linear infinite;
+}
+
+.logo-sparkle {
+  animation: sparkle-twinkle 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--fgc-ink);
+  opacity: 0.8;
+}
+
+nav.main-nav {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+nav.main-nav a {
+  color: var(--fgc-ink);
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--fgc-sage);
+  background: #fff;
+}
+nav.main-nav a:hover {
+  border-color: var(--fgc-rose-deep);
+}
+nav.main-nav a.active {
+  background: var(--fgc-rose-deep);
+  border-color: var(--fgc-rose-deep);
+  color: #fff;
+}
+
+/* ---------- Mobile nav toggle (checkbox hack, no JS) ---------- */
+
+.nav-toggle-checkbox {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  position: absolute;
+  top: 32px;
+  right: 24px;
+  width: 32px;
+  height: 24px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.nav-toggle-label span {
+  display: block;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--fgc-rose-deep);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+@media (max-width: 700px) {
+  .nav-toggle-label { display: flex; }
+
+  nav.main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  nav.main-nav a { text-align: center; }
+
+  .nav-toggle-checkbox:checked ~ nav.main-nav {
+    display: flex;
+  }
+
+  .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-pill {
+  display: inline-block;
+  background: var(--fgc-rose-deep);
+  color: #fff;
+  font-weight: 700;
+  font-family: 'Quicksand', sans-serif;
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(217,132,143,0.35);
+}
+.btn-pill.outline {
+  background: transparent;
+  color: var(--fgc-rose-deep);
+  border: 2px solid var(--fgc-rose-deep);
+  box-shadow: none;
+}
+
+/* ---------- Sections ---------- */
+
+section { padding: 56px 0; }
+section.sage-bg { background: var(--fgc-sage-soft); }
+section.blush-bg { background: var(--fgc-blush-soft); }
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  color: var(--fgc-ink);
+}
+
+/* ---------- Yarn-textured, stitched-in heading (hero) ---------- */
+
+.stitch-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(16px) rotate(-5deg) scale(0.85);
+  animation: stitch-word-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.yarn-text {
+  display: inline-block;
+  background-image: repeating-linear-gradient(45deg, var(--fgc-ink) 0 3px, #8A6670 3px 6px);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@keyframes stitch-word-in {
+  to { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
+}
+
+/* ---------- Scroll-reveal (IntersectionObserver-driven, see scroll-reveal.js) ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: var(--fgc-rose-deep);
+  display: block;
+  margin-bottom: -6px;
+}
+
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: -6px;
+}
+.eyebrow-row .eyebrow { margin-bottom: 0; }
+.mini-flourish { flex-shrink: 0; }
+
+.center { text-align: center; }
+
+/* ---------- Contact form ---------- */
+
+.contact-form { text-align: left; }
+
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin: 18px 0 6px;
+}
+.contact-form label:first-child { margin-top: 0; }
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--fgc-sage);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: var(--fgc-ink);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--fgc-rose-deep);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-status {
+  margin-top: 14px;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+.form-status-error { color: var(--fgc-rose-deep); }
+
+/* ---------- Trust / parent-operated-commerce disclosure ---------- */
+
+.trust-box {
+  position: relative;
+  z-index: 2;
+  background: var(--fgc-sage-soft);
+  border: 2px solid var(--fgc-sage);
+  border-radius: 18px;
+  padding: 18px 26px;
+  margin: 0 0 32px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  text-align: center;
+}
+.trust-box p { margin: 0; }
+
+/* ---------- Listing detail list (price/turnaround/etc. on product cards) ---------- */
+
+.listing-detail {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 16px;
+  font-size: 0.85rem;
+  text-align: left;
+}
+.listing-detail li { margin: 4px 0; }
+.listing-detail b { color: var(--fgc-ink); }
+
+/* ---------- Coming-soon banner ---------- */
+
+.coming-soon-banner {
+  background: var(--fgc-butter);
+  color: var(--fgc-ink);
+  text-align: center;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ---------- Scalloped card frame ---------- */
+
+.scallop-card {
+  --scallop-r: 14px;
+  background: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 26px rgba(217,132,143,0.22);
+  -webkit-mask-image: radial-gradient(circle var(--scallop-r) at var(--scallop-r) var(--scallop-r), transparent 98%, #000 100%),
+    radial-gradient(circle var(--scallop-r) at calc(100% - var(--scallop-r)) var(--scallop-r), transparent 98%, #000 100%),
+    radial-gradient(circle var(--scallop-r) at var(--scallop-r) calc(100% - var(--scallop-r)), transparent 98%, #000 100%),
+    radial-gradient(circle var(--scallop-r) at calc(100% - var(--scallop-r)) calc(100% - var(--scallop-r)), transparent 98%, #000 100%);
+  mask-image: none; /* fallback: keep rounded-rect look where mask unsupported */
+}
+
+/* ---------- Needle & yarn stitching animation ---------- */
+
+.weave-host { position: relative; }
+
+.above-stitch {
+  position: relative;
+  z-index: 1;
+  background: var(--fgc-cream);
+}
+
+.above-stitch-sage {
+  position: relative;
+  z-index: 1;
+  background: var(--fgc-sage-soft);
+}
+
+.stitch-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1160px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 899px) {
+  .stitch-overlay { display: none; }
+}
+
+.stitch-yarn-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.stitch-yarn {
+  fill: none;
+  stroke: var(--fgc-rose-deep);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 18 14;
+  opacity: 0.55;
+  animation: stitch-flow 3.5s linear infinite;
+}
+
+@keyframes stitch-flow {
+  to { stroke-dashoffset: -320; }
+}
+
+.stitch-needle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  offset-path: path("M -20,100 C 70,20 160,180 250,100 C 340,20 430,180 520,100 C 610,20 700,180 790,100 C 880,20 970,180 1060,100 C 1120,60 1150,60 1180,100");
+  offset-rotate: auto;
+  animation: stitch-move 8s linear infinite;
+}
+
+@keyframes stitch-move {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+.stitch-overlay-hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1160px;
+  height: 440px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 899px) {
+  .stitch-overlay-hero { display: none; }
+}
+
+.stitch-needle-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  offset-path: path("M -60,175 C -20,180 10,188 45,195 C 90,230 250,260 420,255 C 480,250 520,235 564,225 C 580,220 590,222 596,225 C 700,230 900,225 1096,228 C 1115,229 1135,230 1150,231");
+  offset-rotate: auto;
+  transform: rotate(180deg);
+  animation: stitch-move 8s linear infinite;
+}
+
+.stitch-overlay-about {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1160px;
+  height: 460px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 899px) {
+  .stitch-overlay-about { display: none; }
+}
+
+.stitch-needle-about {
+  position: absolute;
+  top: 0;
+  left: 0;
+  offset-path: path("M -60,230 C -48,252 -35,272 -25,288 C 20,310 75,290 135,255 C 260,210 420,195 480,193 C 520,191 550,190 564,190 C 578,189 588,190 596,191 C 720,200 900,225 1000,245 C 1040,255 1075,262 1096,268 C 1112,272 1128,268 1140,255");
+  offset-rotate: auto;
+  transform: rotate(180deg);
+  animation: stitch-move 8s linear infinite;
+}
+
+.stitch-overlay-stay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1080px;
+  height: 222.5px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 899px) {
+  .stitch-overlay-stay { display: none; }
+}
+
+.stitch-needle-stay-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  offset-path: path("M 30,75 C 90,25 180,20 255,55");
+  offset-rotate: auto;
+  transform: rotate(180deg);
+  animation: stitch-move 4s linear infinite;
+}
+
+/* Mobile: same idea, rotated vertical to thread down through the stacked cards */
+
+.stitch-overlay-mobile { display: none; }
+
+@media (max-width: 899px) {
+  .stitch-overlay-mobile {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.stitch-needle-v {
+  position: absolute;
+  top: 0;
+  left: 0;
+  offset-rotate: auto;
+  animation: stitch-move-v 8s linear infinite;
+}
+
+@keyframes stitch-move-v {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+.photo-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-image: url('assets/photo-frame.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.photo-frame-inner {
+  position: absolute;
+  top: 22%;
+  bottom: 22%;
+  left: 23%;
+  right: 23%;
+  background: repeating-linear-gradient(45deg, var(--fgc-blush-soft) 0 12px, var(--fgc-sage-soft) 12px 24px);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--fgc-ink);
+  font-weight: 600;
+  padding: 10px;
+}
+
+/* Real photo popping OUT of the frame — bigger than its inner window and
+   layered above the lace border, like it's breaking past the edge instead
+   of sitting neatly behind it (same idea as .flora-photo below). */
+.photo-frame-pop {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: 76%;
+  z-index: 2;
+  filter: drop-shadow(0 16px 22px rgba(91, 65, 72, 0.35));
+  pointer-events: none;
+}
+
+/* Flora's photo "popping through" the frame — her legs run down behind the
+   frame's bottom border (occluded by .photo-frame-bottom-mask below), her
+   torso shows in the window, and her head/raised hand break past the top. */
+.flora-photo {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 44%;
+  transform: translateX(-50%);
+  z-index: 2;
+  filter: drop-shadow(0 14px 18px rgba(91, 65, 72, 0.3));
+  pointer-events: none;
+}
+
+/* A second copy of the frame image, clipped to just its bottom border band,
+   layered above .flora-photo so her legs appear to disappear behind it. */
+.photo-frame-bottom-mask {
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/photo-frame.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  clip-path: inset(76% 0 0 0);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ---------- Mascot (Flora's OC) ---------- */
+
+.mascot-hero-wrap {
+  position: absolute;
+  top: -48px;
+  right: 4%;
+  z-index: 1;
+  pointer-events: none;
+  animation: mascot-float 4.5s ease-in-out infinite;
+}
+
+.mascot-hero {
+  width: 170px;
+  max-width: 40vw;
+  filter: drop-shadow(0 14px 20px rgba(217,132,143,0.4));
+}
+
+/* Tight wrapper around just the image (not the tag) so the sparkles below
+   always anchor to her regardless of whether the outer wrap is absolutely
+   positioned (peeking layouts) or a flex row (inline layout). */
+.mascot-img-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+/* Same twinkling sparkles as the logo (see .logo-sparkle), scattered around
+   the mascot instead of the wordmark. */
+.mascot-sparkle {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  animation: sparkle-twinkle 2.4s ease-in-out infinite;
+}
+
+.mascot-tag {
+  position: absolute;
+  top: 18px;
+  right: calc(100% + 12px);
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  color: var(--fgc-rose-deep);
+  background: #fff;
+  padding: 4px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--fgc-blush);
+  white-space: nowrap;
+  transform: rotate(-6deg);
+}
+
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@media (max-width: 899px) {
+  .mascot-hero-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .mascot-hero { width: 120px; }
+  .mascot-tag { position: static; transform: rotate(-4deg); }
+}
+
+/* Inline variant — for single-column pages (shop/contact heroes) where there's
+   no adjacent graphic to peek over, so she sits in the normal text flow
+   instead of floating absolutely (which would overlap the copy below her). */
+.mascot-hero-wrap.mascot-inline {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.mascot-inline .mascot-hero { width: 130px; }
+.mascot-inline .mascot-tag { position: static; transform: rotate(-4deg); }
+
+/* ---------- Grid ---------- */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 700px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .wordmark .line-1 { font-size: 2.4rem; }
+  .wordmark .line-2 { font-size: 1.7rem; }
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  text-align: center;
+  padding: 32px 0 40px;
+  font-size: 0.85rem;
+  color: var(--fgc-ink);
+  opacity: 0.75;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-bottom: 14px;
+}
+.footer-links a {
+  color: var(--fgc-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-note {
+  max-width: 520px;
+  margin: 0 auto 14px;
+  line-height: 1.5;
+}
