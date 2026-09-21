@@ -11,6 +11,7 @@
   --fgc-butter: #F3DCA0;
   --fgc-rose-deep: #D9848F;
   --fgc-ink: #5B4148;
+  --fgc-rose-text: #A8465A;   /* darker rose for small text links: 5.7:1 on white (the brand rose is 2.8:1) */
 
   --fgc-blush-soft: #FCEBEE;
   --fgc-sage-soft: #E3ECDF;
@@ -185,6 +186,25 @@ nav.main-nav a.active {
 @media (max-width: 700px) {
   .nav-toggle-label { display: flex; }
 
+  /* The checkbox stays a real control (keyboard and screen reader reachable): invisible, 44x44, centered over the bars */
+  .nav-toggle-checkbox {
+    display: block;
+    position: absolute;
+    top: 22px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+  }
+  .nav-toggle-checkbox:focus-visible ~ .nav-toggle-label {
+    outline: 3px solid var(--fgc-ink);
+    outline-offset: 8px;
+    border-radius: 4px;
+  }
+
   nav.main-nav {
     display: none;
     flex-direction: column;
@@ -358,6 +378,20 @@ h1, h2, h3 {
 }
 .trust-box p { margin: 0; }
 
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--fgc-ink);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip-link:focus { top: 8px; }
+
 /* Text for search engines and screen readers that is not drawn on the page (section headings that keep the h1 > h2 > h3 order) */
 .sr-only {
   position: absolute;
@@ -394,7 +428,9 @@ h1, h2, h3 {
   font-size: 0.95rem;
   line-height: 1.6;
 }
-.faq-item a { color: var(--fgc-rose-deep); font-weight: 600; }
+.faq-item a { color: var(--fgc-rose-text); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.text-link { color: var(--fgc-rose-text); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.card-links { margin-top: 10px; font-size: 0.92rem; }
 
 /* Second note under the trust box (only 2 of each, no custom plushies, shipping) reads as a pair with it */
 .trust-box.plushie-notes {
@@ -441,27 +477,51 @@ h1, h2, h3 {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 8px;
+  bottom: 2px;
   display: flex;
   justify-content: center;
-  gap: 7px;
+  gap: 0;
   z-index: 2;
 }
 .slideshow-dots .dot {
-  width: 10px;
-  height: 10px;
+  position: relative;
+  width: 24px;
+  height: 24px;
   padding: 0;
   border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.slideshow-dots .dot::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 0 0 1px rgba(91, 65, 72, 0.3);
-  cursor: pointer;
 }
-.slideshow-dots .dot.is-active { background: var(--fgc-rose-deep); }
-.slideshow-dots .dot:focus-visible { outline: 2px solid var(--fgc-ink); outline-offset: 2px; }
+.slideshow-dots .dot.is-active::before { background: var(--fgc-rose-deep); }
+.slideshow-dots .dot:focus-visible { outline: 2px solid var(--fgc-ink); outline-offset: -2px; border-radius: 50%; }
 
 @media (prefers-reduced-motion: reduce) {
   .slideshow .slide { transition: none; }
+}
+
+/* Visitors who ask for less motion: every decorative animation ends immediately in its finished state */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* No JavaScript: nothing waits for the scroll observer to become visible */
+@media (scripting: none) {
+  .reveal { opacity: 1; transform: none; }
 }
 
 .product-desc {
@@ -748,6 +808,7 @@ h1, h2, h3 {
    layered above the lace border, like it's breaking past the edge instead
    of sitting neatly behind it (same idea as .flora-photo below). */
 .photo-frame-pop {
+  height: auto;
   position: absolute;
   left: 50%;
   top: 46%;
@@ -799,6 +860,7 @@ h1, h2, h3 {
 .mascot-hero {
   width: 170px;
   max-width: 40vw;
+  height: auto;
   filter: drop-shadow(0 14px 20px rgba(217,132,143,0.4));
 }
 
@@ -915,7 +977,7 @@ footer {
   padding: 32px 0 40px;
   font-size: 0.85rem;
   color: var(--fgc-ink);
-  opacity: 0.75;
+  opacity: 0.9;
 }
 
 .footer-links {

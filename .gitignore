@@ -1,5 +1,17 @@
-# .cpanel.yml deploys everything tracked here with cp -R, so raw phone photos and
-# full-size working copies must never be committed. Only the resized site copies
-# (assets/products/slides/, assets/flora/flora-about.jpg) ship.
+# .cpanel.yml deploys everything tracked here with cp -R, so raw phone photos, design
+# working files and full-size originals must never be committed. Only the resized site
+# copies (assets/products/slides/, assets/flora/flora-about.jpg, the .webp images) ship.
 assets/PXL_*
 assets/products/*.jpg
+
+# Kept on this computer only (already replaced on the site by the .webp versions, or never used)
+logo-design/
+assets/Oc Flora.png
+assets/appie.png
+assets/kitten front and side view.png
+assets/mama and kitten.png
+assets/photo-frame.png
+assets/plushie-kitten-views.png
+assets/plushie-mama-and-kitten.png
+assets/oc-appie.png
+assets/mascot-flora.png

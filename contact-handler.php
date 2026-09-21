@@ -63,7 +63,7 @@ $headers = "From: Florals Garden Crafts Contact Form <$fromAddress>\r\n"
 $sent = mail($to, $subject, $body, $headers);
 
 if (!$sent) {
-    respond(false, "Something went wrong sending that — please try again, or email me directly.");
+    respond(false, "Something went wrong sending that — please try again in a little while.");
 }
 
 respond(true);

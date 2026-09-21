@@ -78,30 +78,9 @@
         "height": 630
       },
       "@type": "CollectionPage",
-      "breadcrumb": {
-        "@id": "https://floralsgardencrafts.com/shop.html#breadcrumb"
-      },
       "mainEntity": {
         "@id": "https://floralsgardencrafts.com/shop.html#products"
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://floralsgardencrafts.com/shop.html#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://floralsgardencrafts.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Shop",
-          "item": "https://floralsgardencrafts.com/shop.html"
-        }
-      ]
     },
     {
       "@type": "ItemList",
@@ -359,12 +338,13 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <div class="gingham-strip"></div>
 <div class="coming-soon-banner">🌱 My first plushies are ready to shop! Only 2 of each, flat $7.50 US shipping.</div>
 
 <header class="site-header wrap">
-  <a href="index.html" class="wordmark">
+  <a href="/" class="wordmark">
     <div class="logo-frame">
       <svg class="logo-swoosh" viewBox="0 0 400 210" aria-hidden="true">
         <defs>
@@ -386,21 +366,23 @@
           </animateMotion>
         </g>
       </svg>
-      <img src="assets/logo.png" alt="Florals Garden Crafts" class="site-logo">
+      <img src="assets/logo.webp" alt="Florals Garden Crafts" class="site-logo" width="900" height="469">
     </div>
   </a>
-  <p class="tagline">Handmade crochet plushies &amp; custom OC drawings, made by Flora</p>
-  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+  <p class="tagline">Handmade crochet plushies by Flora, with custom OC drawings coming soon</p>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" aria-label="Menu">
   <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </label>
   <nav class="main-nav">
-    <a href="index.html">Home</a>
+    <a href="/">Home</a>
     <a href="shop.html" class="active">Shop</a>
-    <a href="index.html#about">About Flora</a>
+    <a href="/#about">About Flora</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
+
+<main id="main">
 
 <section class="pink-gingham-bg">
   <div class="wrap weave-host">
@@ -443,7 +425,7 @@
     <div class="mascot-hero-wrap" style="top: 60px; right: 8%;">
       <span class="mascot-tag">time to go shopping! 🛍️</span>
       <span class="mascot-img-wrap">
-        <img src="assets/mascot-flora.png" alt="Florals Garden Crafts mascot — a pink-haired chibi character in a lace-trimmed dress, one of Flora's own OC drawings" class="mascot-hero">
+        <img src="assets/mascot-flora.webp" alt="Florals Garden Crafts mascot — a pink-haired chibi character in a lace-trimmed dress, one of Flora's own OC drawings" class="mascot-hero" width="440" height="743">
         <svg class="mascot-sparkle" viewBox="0 0 20 20" style="top: -12px; left: -10px; animation-delay: 0s;" aria-hidden="true"><path d="M10,1 C11,7 13,9 19,10 C13,11 11,13 10,19 C9,13 7,11 1,10 C7,9 9,7 10,1 Z" fill="#F0A9B4"/></svg>
         <svg class="mascot-sparkle" viewBox="0 0 20 20" style="top: 4px; right: -16px; width: 16px; height: 16px; animation-delay: 0.6s;" aria-hidden="true"><path d="M10,1 C11,7 13,9 19,10 C13,11 11,13 10,19 C9,13 7,11 1,10 C7,9 9,7 10,1 Z" fill="#F3DCA0"/></svg>
         <svg class="mascot-sparkle" viewBox="0 0 20 20" style="top: 40%; left: -18px; width: 18px; height: 18px; animation-delay: 1.1s;" aria-hidden="true"><path d="M10,1 C11,7 13,9 19,10 C13,11 11,13 10,19 C9,13 7,11 1,10 C7,9 9,7 10,1 Z" fill="#9EBF93"/></svg>
@@ -481,8 +463,8 @@
           <li><b>Shipping:</b> flat $7.50 per order (US)</li>
         </ul>
         <!-- Buy now goes straight to Shopify checkout with this exact plushie (variant 50215927349303, product gid://shopify/Product/10195114065975). -->
-        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927349303:1" aria-label="Buy the Sitting Bee plushie, $22">Buy now</a>
-        <p style="font-size:0.8rem; opacity:0.7; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
+        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927349303:1" aria-label="Buy now: Sitting Bee plushie, $22">Buy now</a>
+        <p style="font-size:0.8rem; opacity:0.85; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
       </div>
 
       <div id="chunky-axolotl" class="scallop-card reveal" style="transition-delay: 0.1s;">
@@ -502,8 +484,8 @@
           <li><b>Shipping:</b> flat $7.50 per order (US)</li>
         </ul>
         <!-- Buy now goes straight to Shopify checkout with this exact plushie (variant 50215927382071, product gid://shopify/Product/10195114098743). -->
-        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927382071:1" aria-label="Buy the Chunky Axolotl plushie, $20">Buy now</a>
-        <p style="font-size:0.8rem; opacity:0.7; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
+        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927382071:1" aria-label="Buy now: Chunky Axolotl plushie, $20">Buy now</a>
+        <p style="font-size:0.8rem; opacity:0.85; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
       </div>
 
       <div id="loaf-cat" class="scallop-card reveal" style="transition-delay: 0.2s;">
@@ -523,8 +505,8 @@
           <li><b>Shipping:</b> flat $7.50 per order (US)</li>
         </ul>
         <!-- Buy now goes straight to Shopify checkout with this exact plushie (variant 50215927414839, product gid://shopify/Product/10195114131511). -->
-        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927414839:1" aria-label="Buy the Loaf Cat plushie, $25">Buy now</a>
-        <p style="font-size:0.8rem; opacity:0.7; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
+        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927414839:1" aria-label="Buy now: Loaf Cat plushie, $25">Buy now</a>
+        <p style="font-size:0.8rem; opacity:0.85; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
       </div>
 
       <div id="triceratops" class="scallop-card reveal" style="transition-delay: 0.3s;">
@@ -543,32 +525,23 @@
           <li><b>Shipping:</b> flat $7.50 per order (US)</li>
         </ul>
         <!-- Buy now goes straight to Shopify checkout with this exact plushie (variant 50215927447607, product gid://shopify/Product/10195114164279). -->
-        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927447607:1" aria-label="Buy the Triceratops plushie, $22">Buy now</a>
-        <p style="font-size:0.8rem; opacity:0.7; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
+        <a class="btn-pill btn-block" href="https://mariegems.com/cart/50215927447607:1" aria-label="Buy now: Triceratops plushie, $22">Buy now</a>
+        <p style="font-size:0.8rem; opacity:0.85; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
       </div>
 
       <div id="oc-art" class="scallop-card reveal" style="transition-delay: 0.15s;">
         <div class="photo-frame">
-          <img src="assets/oc-appie.png" alt="Preview: a custom OC drawing sample by Flora — a bear-eared chibi character holding a small plush toy" class="photo-frame-pop" style="width: 42%; top: 42%;">
+          <img src="assets/oc-appie.webp" alt="Preview: a custom OC drawing sample by Flora — a bear-eared chibi character holding a small plush toy" class="photo-frame-pop" style="width: 42%; top: 42%;" width="300" height="572" loading="lazy">
         </div>
         <h3 style="margin-bottom:4px;">OC Art Commission</h3>
-        <p style="opacity:0.75; margin-top:0;">Tiers &amp; pricing TBD</p>
-        <ul class="listing-detail">
-          <li><b>Price:</b> TBD</li>
-          <li><b>Medium:</b> TBD</li>
-          <li><b>Turnaround:</b> TBD</li>
-          <li><b>Revisions:</b> TBD</li>
-          <li><b>Ships to:</b> TBD (digital delivery may not need shipping)</li>
-          <li><b>Reference art you send:</b> TBD — how it may be used/credited</li>
-        </ul>
+        <p class="product-desc" style="margin-bottom:16px;">Custom drawings of your very own character are coming soon. <a class="text-link" href="/#stay-tuned">Join my newsletter</a> and I&rsquo;ll let you know the moment they open.</p>
         <!--
-          Real Shopify Buy Button embed goes here once the product is ACTIVE,
-          published to the Buy Button channel, and manually unpublished from
-          Online Store in Shopify Admin. See memory/projects/florals-garden-crafts.md.
+          When OC art opens: make the Shopify product ACTIVE, then use a Buy now button linked the same way as the
+          plushies (https://mariegems.com/cart/<variantId>:1) in place of the Coming soon pill below.
           Shopify product: gid://shopify/Product/7521604862007
         -->
-        <div class="btn-pill outline" style="width:100%; text-align:center; cursor:default;">Buy button coming soon</div>
-        <p style="font-size:0.8rem; opacity:0.7; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
+        <div class="btn-pill outline" style="width:100%; text-align:center; cursor:default;">Coming soon</div>
+        <p style="font-size:0.8rem; opacity:0.85; margin:8px 0 0; text-align:center;">Checkout runs through Marie Gems&rsquo; Shopify (Flora&rsquo;s mom) — she handles all orders, shipping &amp; payments.</p>
       </div>
 
     </div>
@@ -608,7 +581,7 @@
         </div>
         <div class="faq-item">
           <h3>When will OC art commissions open?</h3>
-          <p>OC art commissions are coming soon. Join my <a href="index.html#stay-tuned">newsletter on the home page</a> and I&rsquo;ll let you know the moment they&rsquo;re ready.</p>
+          <p>OC art commissions are coming soon. Join my <a href="/#stay-tuned">newsletter on the home page</a> and I&rsquo;ll let you know the moment they&rsquo;re ready.</p>
         </div>
         <div class="faq-item">
           <h3>How do I ask a question about a plushie?</h3>
@@ -617,6 +590,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap footer-links">

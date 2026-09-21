@@ -27,7 +27,7 @@
           }
         })
         .catch(function () {
-          status.textContent = 'Something went wrong — please try again, or email me directly.';
+          status.textContent = 'Something went wrong — please try again in a little while.';
           status.classList.add('form-status-error');
         })
         .then(function () {
