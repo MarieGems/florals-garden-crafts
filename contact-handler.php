@@ -1,6 +1,6 @@
 <?php
 // contact-handler.php — backend for the FloralsGardenCrafts.com contact form.
-// Receives a POST from contact.html's #contactForm and emails emma@floralsgardencrafts.com.
+// Receives a POST from the contact forms (contact.html and the home page) and emails hello@floralsgardencrafts.com.
 
 header('Content-Type: application/json');
 
@@ -42,7 +42,7 @@ if (mb_strlen($message) > 5000) {
 $name = str_replace(["\r", "\n"], '', $name);
 $email = str_replace(["\r", "\n"], '', $email);
 
-$to = 'emma@floralsgardencrafts.com';
+$to = 'hello@floralsgardencrafts.com';
 $subject = 'New contact form message from ' . $name;
 
 $body = "You've got a new message from the FloralsGardenCrafts.com contact form.\n\n"
