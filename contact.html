@@ -3,13 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Florals Garden Crafts</title>
+<title>Contact Florals Garden Crafts | Ask About a Plushie</title>
+<meta name="description" content="Have a question about a handmade crochet plushie, or just want to say hi? Send Flora a message with the contact form and she will get back to you soon.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://floralsgardencrafts.com/contact.html">
+<meta name="theme-color" content="#F7D7DC">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Florals Garden Crafts">
+<meta property="og:title" content="Contact Florals Garden Crafts | Ask About a Plushie">
+<meta property="og:description" content="Have a question about a handmade crochet plushie, or just want to say hi? Send Flora a message with the contact form and she will get back to you soon.">
+<meta property="og:url" content="https://floralsgardencrafts.com/contact.html">
+<meta property="og:image" content="https://floralsgardencrafts.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Florals Garden Crafts logo above four handmade crochet plushies: a sitting bee, a chunky axolotl, a loaf cat and a triceratops">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Florals Garden Crafts | Ask About a Plushie">
+<meta name="twitter:description" content="Have a question about a handmade crochet plushie, or just want to say hi? Send Flora a message with the contact form and she will get back to you soon.">
+<meta name="twitter:image" content="https://floralsgardencrafts.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://floralsgardencrafts.com/#organization",
+      "name": "Florals Garden Crafts",
+      "url": "https://floralsgardencrafts.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://floralsgardencrafts.com/assets/logo.png",
+        "width": 900,
+        "height": 469
+      },
+      "description": "Florals Garden Crafts is a small handmade shop by Flora. She crochets plushies by hand and will offer custom OC (original character) drawings soon. Orders check out through the Marie Gems Shopify store, which Flora's mom runs.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://floralsgardencrafts.com/contact.html"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://floralsgardencrafts.com/#website",
+      "url": "https://floralsgardencrafts.com/",
+      "name": "Florals Garden Crafts",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://floralsgardencrafts.com/#organization"
+      }
+    },
+    {
+      "@id": "https://floralsgardencrafts.com/contact.html#webpage",
+      "url": "https://floralsgardencrafts.com/contact.html",
+      "name": "Contact Florals Garden Crafts | Ask About a Plushie",
+      "description": "Have a question about a handmade crochet plushie, or just want to say hi? Send Flora a message with the contact form and she will get back to you soon.",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@id": "https://floralsgardencrafts.com/#website"
+      },
+      "about": {
+        "@id": "https://floralsgardencrafts.com/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://floralsgardencrafts.com/og-image.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "@type": "ContactPage",
+      "breadcrumb": {
+        "@id": "https://floralsgardencrafts.com/contact.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://floralsgardencrafts.com/contact.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://floralsgardencrafts.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://floralsgardencrafts.com/contact.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <div class="gingham-strip"></div>
-<div class="coming-soon-banner">🌱 We're growing something new — Florals Garden Crafts is getting ready to open!</div>
+<div class="coming-soon-banner">🌱 My first plushies are ready to shop! Only 2 of each, flat $7.50 US shipping.</div>
 
 <header class="site-header wrap">
   <a href="index.html" class="wordmark">
@@ -147,41 +245,6 @@
 </footer>
 
 <script src="scroll-reveal.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const contactForm = document.getElementById('contactForm');
-  if (!contactForm) return;
-  const submitBtn = document.getElementById('contactSubmit');
-  const status = document.getElementById('formStatus');
-
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    status.textContent = '';
-    status.classList.remove('form-status-error');
-
-    fetch('contact-handler.php', { method: 'POST', body: new FormData(contactForm) })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.ok) {
-          status.textContent = "Thanks — your message is on its way! I'll get back to you soon.";
-          contactForm.reset();
-        } else {
-          status.textContent = data.error || 'Something went wrong — please try again.';
-          status.classList.add('form-status-error');
-        }
-        submitBtn.textContent = 'Send message';
-        submitBtn.disabled = false;
-      })
-      .catch(() => {
-        status.textContent = 'Something went wrong — please try again, or email me directly.';
-        status.classList.add('form-status-error');
-        submitBtn.textContent = 'Send message';
-        submitBtn.disabled = false;
-      });
-  });
-});
-</script>
+<script src="contact-form.js"></script>
 </body>
 </html>

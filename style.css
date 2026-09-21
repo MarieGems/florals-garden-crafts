@@ -1,7 +1,8 @@
 /* Florals Garden Crafts — shared styles
    Tokens per DESIGN.md "Florals Garden Crafts" section. */
 
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+/* Fonts (Baloo 2, Caveat, Quicksand) are loaded with <link> tags in each page's <head>,
+   not @import here, so the browser can fetch them in parallel with this file. */
 
 :root {
   --fgc-cream: #FFF8F0;
@@ -357,6 +358,51 @@ h1, h2, h3 {
 }
 .trust-box p { margin: 0; }
 
+/* Text for search engines and screen readers that is not drawn on the page (section headings that keep the h1 > h2 > h3 order) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Questions and answers (shop page) ---------- */
+
+.faq-list {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0 0;
+  text-align: left;
+}
+.faq-item {
+  background: #fff;
+  border: 2px solid var(--fgc-sage);
+  border-radius: 18px;
+  padding: 16px 22px;
+}
+.faq-item h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+.faq-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.faq-item a { color: var(--fgc-rose-deep); font-weight: 600; }
+
+/* Second note under the trust box (only 2 of each, no custom plushies, shipping) reads as a pair with it */
+.trust-box.plushie-notes {
+  background: var(--fgc-blush-soft);
+  border-color: var(--fgc-blush);
+  margin-top: -14px;
+}
+
 /* ---------- Listing detail list (price/turnaround/etc. on product cards) ---------- */
 
 .listing-detail {
@@ -368,6 +414,77 @@ h1, h2, h3 {
 }
 .listing-detail li { margin: 4px 0; }
 .listing-detail b { color: var(--fgc-ink); }
+
+/* ---------- Real product cards (shop page) ---------- */
+
+.slideshow {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--fgc-blush-soft);   /* soft mat: portrait, square and landscape photos all show whole */
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 0 0 14px;
+}
+
+.slideshow .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.slideshow .slide.is-active { opacity: 1; }
+
+.slideshow-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  z-index: 2;
+}
+.slideshow-dots .dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 1px rgba(91, 65, 72, 0.3);
+  cursor: pointer;
+}
+.slideshow-dots .dot.is-active { background: var(--fgc-rose-deep); }
+.slideshow-dots .dot:focus-visible { outline: 2px solid var(--fgc-ink); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slideshow .slide { transition: none; }
+}
+
+.product-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  opacity: 0.85;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Cards in a row stretch to equal height; pin the Buy button to the bottom so
+   the buttons line up even when a size line wraps differently. */
+.scallop-card:has(> .slideshow) {
+  display: flex;
+  flex-direction: column;
+}
+.scallop-card:has(> .slideshow) > .btn-block { margin-top: auto; }
 
 /* ---------- Coming-soon banner ---------- */
 
@@ -570,7 +687,7 @@ h1, h2, h3 {
 .photo-frame {
   position: relative;
   aspect-ratio: 4 / 3;
-  background-image: url('assets/photo-frame.png');
+  background-image: url('assets/photo-frame.webp');
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -590,6 +707,41 @@ h1, h2, h3 {
   color: var(--fgc-ink);
   font-weight: 600;
   padding: 10px;
+}
+
+/* Real About photo: a white-bordered polaroid sitting on the lace frame. */
+.polaroid {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54%;
+  margin: 0;
+  padding: 3.2% 3.2% 11%;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 10px 22px rgba(91, 65, 72, 0.28);
+  transform: translate(-50%, -50%) rotate(-2deg);
+  z-index: 2;
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The polaroid fills most of its frame at every size (a slight overhang past
+   the lace edge reads as a photo laid on a doily). On desktop the photo column
+   also gets a bit wider. */
+@media (min-width: 900px) {
+  .grid-2:has(.polaroid) { grid-template-columns: 1.2fr 1fr; }
+}
+
+/* Flodesk newsletter form: container styling only. The form brings its own
+   heading and body text from Flodesk, so no copy is added around it. */
+.newsletter-embed {
+  max-width: 520px;
+  margin: 16px auto 28px;
 }
 
 /* Real photo popping OUT of the frame — bigger than its inner window and
@@ -625,7 +777,7 @@ h1, h2, h3 {
 .photo-frame-bottom-mask {
   position: absolute;
   inset: 0;
-  background-image: url('assets/photo-frame.png');
+  background-image: url('assets/photo-frame.webp');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   clip-path: inset(76% 0 0 0);
@@ -700,6 +852,25 @@ h1, h2, h3 {
   }
   .mascot-hero { width: 120px; }
   .mascot-tag { position: static; transform: rotate(-4deg); }
+}
+
+/* Phones: instead of stacking above the headline, the OC peeks over the cat
+   photo's top-right corner, same as desktop. She sits between the copy and the
+   photo in the flow and overlaps the frame with a negative bottom margin (her
+   own height minus the ~33px that stays above the frame, plus the 32px grid
+   gap). z-index 1 keeps the cats in front of her, like desktop. */
+@media (max-width: 700px) {
+  .hero-grid > .above-stitch { order: 1; }
+  .hero-grid > .mascot-hero-wrap {
+    order: 2;
+    top: 0;
+    right: 0;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin: 24px 4% -194px 0;
+  }
+  .hero-grid > .mascot-hero-wrap .mascot-tag { margin-top: 6px; }
+  .hero-grid > .photo-frame { order: 3; }
 }
 
 /* Inline variant — for single-column pages (shop/contact heroes) where there's

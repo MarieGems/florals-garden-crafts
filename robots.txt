@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /logo-design/
+Disallow: /contact-handler.php
+
+Sitemap: https://floralsgardencrafts.com/sitemap.xml

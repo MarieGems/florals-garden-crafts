@@ -1,0 +1,5 @@
+# .cpanel.yml deploys everything tracked here with cp -R, so raw phone photos and
+# full-size working copies must never be committed. Only the resized site copies
+# (assets/products/slides/, assets/flora/flora-about.jpg) ship.
+assets/PXL_*
+assets/products/*.jpg
