@@ -11,6 +11,7 @@
   --fgc-butter: #F3DCA0;
   --fgc-rose-deep: #D9848F;
   --fgc-ink: #5B4148;
+  --fgc-rose-btn: #B8566B;    /* button fill: white text on it is 4.6:1 (the brand rose #D9848F is only 2.8:1 under white text) */
   --fgc-rose-text: #A8465A;   /* darker rose for small text links: 5.7:1 on white (the brand rose is 2.8:1) */
 
   --fgc-blush-soft: #FCEBEE;
@@ -151,8 +152,8 @@ nav.main-nav a:hover {
   border-color: var(--fgc-rose-deep);
 }
 nav.main-nav a.active {
-  background: var(--fgc-rose-deep);
-  border-color: var(--fgc-rose-deep);
+  background: var(--fgc-rose-btn);
+  border-color: var(--fgc-rose-btn);
   color: #fff;
 }
 
@@ -234,7 +235,7 @@ nav.main-nav a.active {
 
 .btn-pill {
   display: inline-block;
-  background: var(--fgc-rose-deep);
+  background: var(--fgc-rose-btn);
   color: #fff;
   font-weight: 700;
   font-family: 'Quicksand', sans-serif;
@@ -243,11 +244,11 @@ nav.main-nav a.active {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(217,132,143,0.35);
+  box-shadow: 0 4px 14px rgba(184,86,107,0.3);
 }
 .btn-pill.outline {
   background: transparent;
-  color: var(--fgc-rose-deep);
+  color: var(--fgc-rose-text);
   border: 2px solid var(--fgc-rose-deep);
   box-shadow: none;
 }
@@ -360,7 +361,7 @@ h1, h2, h3 {
   font-weight: 600;
   min-height: 1.2em;
 }
-.form-status-error { color: var(--fgc-rose-deep); }
+.form-status-error { color: var(--fgc-rose-text); }
 
 /* ---------- Trust / parent-operated-commerce disclosure ---------- */
 
@@ -997,4 +998,96 @@ footer {
   max-width: 520px;
   margin: 0 auto 14px;
   line-height: 1.5;
+}
+
+
+/* ---------- Audit fixes 2026-09-26 ---------- */
+
+/* Form submit buttons: 48px tall so they are an easy thumb target */
+.contact-form .btn-pill { min-height: 48px; }
+
+/* Footer policy links: taller tap area without changing how they look */
+.footer-links { gap: 0 14px; }
+.footer-links a { display: inline-block; padding: 11px 6px; }
+
+/* Sneak-peek caption on the home hero photo (that cat set is not in the shop yet) */
+.frame-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  z-index: 4;
+  margin: 0;
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--fgc-blush);
+  color: var(--fgc-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Home page: the four plushies that are ready to buy, shown right under the hero */
+.quick-shop { padding: 40px 0 48px; background: var(--fgc-blush-soft); }
+.quick-shop h2 { text-align: center; margin: 0 0 6px; }
+.quick-shop .quick-intro { text-align: center; margin: 0 auto 26px; max-width: 520px; font-size: 0.95rem; }
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.quick-grid a {
+  display: block;
+  height: 100%;
+  background: #fff;
+  border-radius: 20px;
+  padding: 10px 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--fgc-ink);
+  box-shadow: 0 8px 20px rgba(217,132,143,0.2);
+}
+.quick-grid img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--fgc-blush-soft);
+  border-radius: 14px;
+}
+.quick-grid .q-name { display: block; font-weight: 700; margin-top: 10px; }
+.quick-grid .q-price { display: block; font-size: 0.9rem; }
+.quick-grid .q-go { display: block; margin-top: 6px; color: var(--fgc-rose-text); font-weight: 700; font-size: 0.9rem; text-decoration: underline; text-underline-offset: 2px; }
+.quick-grid a:hover, .quick-grid a:focus-visible { box-shadow: 0 10px 24px rgba(217,132,143,0.4); }
+.quick-shop .quick-cta { text-align: center; margin: 26px 0 0; }
+@media (max-width: 700px) {
+  .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+
+/* Shop page: the short note above the products (the full notes sit under the products) */
+.shop-note {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto 28px;
+  padding: 12px 20px;
+  background: var(--fgc-blush-soft);
+  border: 2px solid var(--fgc-blush);
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+.shop-note p { margin: 0; }
+.before-you-buy { padding: 40px 0 8px; }
+.before-you-buy .trust-box { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* Very narrow phones (340): let the OC's speech tag wrap so it cannot push the page wider than the screen */
+@media (max-width: 400px) {
+  .mascot-tag-long { white-space: normal; max-width: 9em; text-align: center; line-height: 1.15; }
 }
