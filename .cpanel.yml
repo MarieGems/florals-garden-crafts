@@ -3,3 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/marirahg/floralsgardencrafts.com/
     - /bin/cp -R * $DEPLOYPATH
+    - /bin/grep -qs turnstile-secret ${DEPLOYPATH}.htaccess || /bin/cat htaccess-turnstile-guard.txt >> ${DEPLOYPATH}.htaccess
