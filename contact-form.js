@@ -31,6 +31,8 @@
           status.classList.add('form-status-error');
         })
         .then(function () {
+          // Turnstile tokens are single-use, so get a fresh one after every attempt.
+          if (window.turnstile && form.querySelector('.cf-turnstile')) window.turnstile.reset();
           btn.textContent = label;
           btn.disabled = false;
         });
